@@ -1,0 +1,143 @@
+:root {
+      --navy:   #30364F;
+      --slate:  #ACBAC4;
+      --sand:   #E1D9BC;
+      --cream:  #F0F0DB;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background-color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      /* subtle grain */
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    .login-page {
+      width: 100%;
+      max-width: 420px;
+      padding: 2rem;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .login-form {
+      background: var(--navy);
+      border-radius: 2px;
+      padding: 3rem 2.8rem 2.8rem;
+      position: relative;
+      /* decorative top bar */
+    }
+
+    .login-form::before {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: var(--sand);
+      margin-bottom: 2.4rem;
+    }
+
+    .login-form::after {
+      content: 'Sign In';
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--cream);
+      letter-spacing: 0.04em;
+      margin-bottom: 2.2rem;
+      position: absolute;
+      top: 3rem;
+      left: 2.8rem;
+    }
+
+    /* push form content below the pseudo-element title */
+    .form-group:first-of-type {
+      margin-top: 3.6rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.6rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(172, 186, 196, 0.4);
+      padding: 0.6rem 0;
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.25s ease;
+      caret-color: var(--sand);
+    }
+
+    .form-control::placeholder {
+      color: rgba(172, 186, 196, 0.3);
+      font-size: 0.85rem;
+    }
+
+    .form-control:focus {
+      border-bottom-color: var(--sand);
+    }
+
+    .btn-primary {
+      margin-top: 2.4rem;
+      width: 100%;
+      background: var(--sand);
+      color: var(--navy);
+      border: none;
+      padding: 0.85rem 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 1px;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--cream);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    /* corner accent */
+    .login-form > .corner {
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      width: 28px;
+      height: 28px;
+      background: var(--sand);
+      clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    }

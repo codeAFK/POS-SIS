@@ -1,0 +1,238 @@
+:root {
+  --navy:  #30364F;
+  --slate: #ACBAC4;
+  --sand:  #E1D9BC;
+  --cream: #F0F0DB;
+
+  --navy-light: #3e4566;
+  --navy-dark:  #22283a;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-mono:    'DM Mono', 'Courier New', monospace;
+
+  --sidebar-w: 240px;
+  --radius:    4px;
+  --transition: 0.22s ease;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  font-family: var(--font-mono);
+  background: var(--cream);
+  color: var(--navy);
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* =============================================
+   SIDEBAR — admin-dashboard
+   ============================================= */
+.admin-dashboard {
+  width: var(--sidebar-w);
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 2rem 0 2rem;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  box-shadow: 4px 0 20px rgba(48,54,79,.18);
+  z-index: 100;
+}
+
+/* Sidebar top accent line */
+.admin-dashboard::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--sand);
+  margin: 0 0 2rem 1.5rem;
+  border-radius: 2px;
+}
+
+/* Nav items */
+.admin-dashboard > div {
+  position: relative;
+}
+
+.admin-dashboard > div a {
+  display: block;
+  padding: 0.8rem 1.5rem;
+  color: var(--slate);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color var(--transition), background var(--transition);
+  border-left: 2px solid transparent;
+}
+
+.admin-dashboard > div a:hover {
+  color: var(--cream);
+  background: rgba(172,186,196,.07);
+  border-left-color: var(--sand);
+}
+
+/* Active state helper (add class="active" to a div) */
+.admin-dashboard > div.active a {
+  color: var(--sand);
+  border-left-color: var(--sand);
+}
+
+/* Logout button — pushed to bottom */
+.logout {
+  margin-top: auto;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  padding: 0.65rem 1.2rem;
+  background: transparent;
+  border: 1px solid rgba(172,186,196,.35);
+  border-radius: var(--radius);
+  color: var(--slate);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.logout:hover {
+  background: rgba(225,217,188,.08);
+  color: var(--sand);
+  border-color: var(--sand);
+}
+
+/* =============================================
+   MAIN CONTENT — profile
+   ============================================= */
+.profile {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  padding: 3rem 3rem 3rem 3.5rem;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 2rem;
+  min-height: 100vh;
+}
+
+/* ── User Info Card ── */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: var(--sand);
+  border-radius: var(--radius);
+  padding: 2.5rem 2.5rem 2rem;
+  max-width: 480px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle geometric accent */
+.user-info::after {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 130px; height: 130px;
+  border-radius: 50%;
+  background: rgba(48,54,79,.06);
+  pointer-events: none;
+}
+
+/* User avatar */
+.user-img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.4rem;
+  box-shadow: 0 4px 12px rgba(48,54,79,.2);
+}
+
+.user-img i {
+  font-size: 2rem;
+  color: var(--slate);
+}
+
+/* Name */
+.user-name h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 0.01em;
+}
+
+/* ID */
+.user-id h3 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--navy-light);
+  opacity: 0.75;
+}
+
+/* ── User History Panel ── */
+.user-history {
+  background: var(--cream);
+  border: 1px solid var(--sand);
+  border-radius: var(--radius);
+  max-width: 700px;
+  min-height: 180px;
+  padding: 1.5rem 2rem;
+  position: relative;
+}
+
+/* Placeholder label */
+.user-history::before {
+  content: 'Login / Logout History';
+  position: absolute;
+  top: 1.25rem; left: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+/* =============================================
+   Entrance animations
+   ============================================= */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.admin-dashboard > div {
+  animation: fadeUp 0.4s ease both;
+}
+.admin-dashboard > div:nth-child(1) { animation-delay: 0.05s; }
+.admin-dashboard > div:nth-child(2) { animation-delay: 0.10s; }
+.admin-dashboard > div:nth-child(3) { animation-delay: 0.15s; }
+.admin-dashboard > div:nth-child(4) { animation-delay: 0.20s; }
+.logout { animation: fadeUp 0.4s 0.28s ease both; }
+
+.user-info    { animation: fadeUp 0.45s 0.10s ease both; }
+.user-history { animation: fadeUp 0.45s 0.22s ease both; }
+
+/* =============================================
+   Scrollbar styling
+   ============================================= */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--slate); border-radius: 3px; }
