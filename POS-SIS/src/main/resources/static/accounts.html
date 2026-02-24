@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/account-style.css">
+</head>
+<body>
+<div class="back-button">
+    <input type="button" value="Back" onclick="window.history.back()">
+</div>
+<div class="account">
+    <div class="search-bar">
+        <label for="account-search" class="account-search-label">Search Account</label>
+        <div class="search-input-wrap">
+            <i class="bxf bx-user-search"></i>
+            <input type="search" id="account-search" placeholder="Search by name or User ID">
+            <button type="button" class="search-btn">Search</button>
+        </div>
+
+    </div>
+    <table class="account-table">
+        <thead>
+        <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Middle Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">User ID</th>
+            <th scope="col">Account Role</th>
+            <th scope="col">Status</th>
+            <th scope="col">Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="empty-row">
+            <td colspan="7">No accounts to display.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
